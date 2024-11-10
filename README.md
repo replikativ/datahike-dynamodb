@@ -13,8 +13,7 @@ reading, but has higher cost than using a local file system, S3 or a JDBC server
 backend. It is therefore optimal to store small databases that need to be updated and read quickly. 
 
 ## Configuration
-Please read the [Datahike configuration docs](https://github.com/replikativ/datahike/blob/master/doc/config.md) on how to configure your backend. Details about the backend configuration can be found in [konserve-dynamodb](https://github.com/replikativ/konserve-dynamodb).A sample configuration is
-`create-database`, `connect` and `delete-database`:
+Please read the [Datahike configuration docs](https://github.com/replikativ/datahike/blob/master/doc/config.md) on how to configure your backend. Details about the backend configuration can be found in [konserve-dynamodb](https://github.com/replikativ/konserve-dynamodb). Set your `AWS_ACCESS_KEY` and `AWS_SECRET_ACCESS_KEY` environment variables. A sample configuration for `create-database`, `connect` and `delete-database` is (you can optionally pass the keys in the config, but this is only recommended for development and testing):
 ```clojure
 {:store {:backend :dynamodb
          :table "my-datahike-db"
@@ -26,7 +25,7 @@ This same configuration can be achieved by setting one environment variable for 
 and one environment variable for the configuration of the dynamodb backend:
 ```bash
 DATAHIKE_STORE_BACKEND=dynamodb
-DATAHIKE_STORE_CONFIG='{:bucket "datahike-dynamodb-instance" ...}'
+DATAHIKE_STORE_CONFIG='{:table "datahike-dynamodb-instance" ...}'
 ```
 
 ## Usage
@@ -45,9 +44,7 @@ keyword `:dynamodb`. If you want to use other backends than dynamodb please refe
 
   (def cfg {:store {:backend :dynamodb
                     :region "us-west-1"
-                    :table "my-datahike-db"
-                    :access-key "YOUR_ACCESS_KEY"
-                    :secret "YOUR_ACCESS_KEY_SECRET"}})
+                    :table "my-datahike-db"}})
 
   ;; Create a database at this place, by default configuration we have a strict
   ;; schema validation and keep historical data
