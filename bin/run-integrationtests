@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+TIMBRE_LEVEL=':warn' DATAHIKE_STORE_BACKEND=dynamodb DATAHIKE_STORE_CONFIG='{:table "datahike-dynamodb-instance" :region "us-west-1"}' clojure -M:test
