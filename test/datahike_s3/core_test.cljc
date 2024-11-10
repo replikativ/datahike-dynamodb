@@ -5,7 +5,6 @@
    [datahike.api :as d]
    [datahike-dynamodb.core]))
 
-
 (deftest ^:integration test-dynamodb
   (let [config {:store {:backend :dynamodb
                         :region  "us-west-2"

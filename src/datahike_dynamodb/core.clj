@@ -27,10 +27,10 @@
 (s/def :datahike.store.dynamodb/access-key string?)
 (s/def :datahike.store.dynamodb/secret string?)
 (s/def ::dynamodb (s/keys :req-un [:datahike.store.dynamodb/backend]
-                    :opt-un [:datahike.store.dynamodb/region
-                             :datahike.store.dynamodb/table
-                             :datahike.store.dynamodb/access-key
-                             :datahike.store.dynamodb/secret]))
+                          :opt-un [:datahike.store.dynamodb/region
+                                   :datahike.store.dynamodb/table
+                                   :datahike.store.dynamodb/access-key
+                                   :datahike.store.dynamodb/secret]))
 
 (defmethod config-spec :dynamodb [_] ::dynamodb)
 
